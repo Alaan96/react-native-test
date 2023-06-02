@@ -9,30 +9,23 @@ const Input = ({ label, type, value, onInput }) => {
 
   const styles = StyleSheet.create({
     inputContainer: {
-      width: '100%'
+      flex: 1
     },
     label: {
-      position: 'absolute',
-      top: '0.875rem',
-      left: '1rem',
-      color: 'hsla(228, 20%, 65%, 1)',
+      color: 'white',
       fontWeight: '600',
       textTransform: 'capitalize',
-      fontSize: '0.75rem',
-      transform: 'translateY(-0.5rem)'
+      fontSize: 16,
+      
     },
     input: {
-      width: '100%',
-      height: '3rem',
-      paddingTop: '1rem',
-      paddingHorizontal: '1rem',
-      paddingBottom: '0.125rem',
-      color: 'hsl(233, 12%, 13%)',
-      backgroundColor: 'white',
-      borderWidth: '1px',
-      borderColor: 'hsla(228, 20%, 65%, 0.2)',
-      borderRadius: '0.75rem',
-      caretColor: 'hsl(342, 100%, 50%)'
+      width: 100,
+      height: 100,
+      paddingHorizontal: 150,
+      color: 'black',
+      borderWidth: 10,
+      borderColor: 'white',
+      borderRadius: 10
     }
   })
 

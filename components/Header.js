@@ -4,15 +4,15 @@ import Logo from './Logo'
 
 const styles = StyleSheet.create({
   header: {
-    width: '100vw',
-    paddingVertical: '0.75rem',
+    width: '100%',
+    paddingVertical: 100,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'white',
   },
   logo: {
-    width: '5rem',
-    height: '3rem',
+    width: 300,
+    height: 300,
   },
 })
 
