@@ -1,6 +1,9 @@
 import { gql, useMutation } from '@apollo/client'
-import React from 'react'
-import { Button, Text, View } from 'react-native'
+import React, { useState } from 'react'
+import { Button, StyleSheet, Text, View } from 'react-native'
+// Components
+import Logo from '../components/Logo'
+import Input from '../components/Input'
 
 const loginMutation = gql`
   mutation Login($email: String!, $password: String!) {
@@ -10,18 +13,43 @@ const loginMutation = gql`
     }
   }
 `
+const styles = StyleSheet.create({
+  container: {
+    maxWidth: '32rem',
+    width: '100%',
+    paddingHorizontal: '1.25rem',
+    alignItems: 'center',
+    backgroundColor: 'white'
+  },
+  logo: {
+    width: '8.5rem',
+    height: '5rem',
+    marginVertical: '2.5rem'
+  }
+})
 
 const LoginScreen = () => {
+  const [email, setEmail] = useState('alan@getcharly.com')
+  const [password, setPassword] = useState('passdealan')
+
   const [login, { loading, error, data }] = useMutation(loginMutation, {
     variables: {
-      email: 'alan@getcharly.com',
-      password: 'passdealan'
+      email: email,
+      password: password
     }
   })
 
   return (
-    <View>
-      <Text>Login</Text>
+    <View style={styles.container}>
+      <Logo style={styles.logo} />
+      <Input
+        type="email-address"
+        label="Email"
+        value={email}
+        onInput={setEmail}
+      />
+      <Input label="Password" value={password} onInput={setPassword} />
+
       {loading && <Text>Cargando...</Text>}
       {error && <Text>Error: {error.message}</Text>}
       {data && <Text>Data: {data}</Text>}
