@@ -15,16 +15,16 @@ const loginMutation = gql`
 `
 const styles = StyleSheet.create({
   container: {
-    maxWidth: '32rem',
-    width: '100%',
-    paddingHorizontal: '1.25rem',
+    flex:1,
+    paddingHorizontal: 0,
+    paddingBottom: 100,
     alignItems: 'center',
-    backgroundColor: 'white'
+    backgroundColor: 'gray'
   },
   logo: {
-    width: '8.5rem',
-    height: '5rem',
-    marginVertical: '2.5rem'
+    width: 200,
+    height: 250,
+    marginVertical: 0
   }
 })
 
