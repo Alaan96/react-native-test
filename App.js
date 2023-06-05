@@ -7,7 +7,7 @@ import HomeScreen from './screens/HomeScreen'
 import LoginScreen from './screens/LoginScreen'
 
 const client = new ApolloClient({
-  uri: 'http://localhost:8081/localdev/graphql',
+  uri: 'http://192.168.0.76:8081/localdev/graphql',
   cache: new InMemoryCache()
 })
 const Stack = createNativeStackNavigator()

@@ -52,7 +52,7 @@ const LoginScreen = () => {
 
       {loading && <Text>Cargando...</Text>}
       {error && <Text>Error: {error.message}</Text>}
-      {data && <Text>Data: {data}</Text>}
+      {data && <Text>Data: {data.login._id}</Text>}
       <Button title="Login" onPress={login} />
     </View>
   )
