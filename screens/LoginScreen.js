@@ -1,6 +1,9 @@
-import { gql, useMutation } from '@apollo/client'
 import React, { useState } from 'react'
 import { Button, StyleSheet, Text, View } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import { useDispatch } from 'react-redux'
+import { login as loginAction } from '../store/userReducer'
+import { gql, useMutation } from '@apollo/client'
 // Components
 import Logo from '../components/Logo'
 import Input from '../components/Input'
@@ -29,6 +32,9 @@ const styles = StyleSheet.create({
 })
 
 const LoginScreen = () => {
+  const navigation = useNavigation()
+  const dispatch = useDispatch()
+
   const [email, setEmail] = useState('alan@getcharly.com')
   const [password, setPassword] = useState('passdealan')
 
@@ -38,6 +44,14 @@ const LoginScreen = () => {
       password: password
     }
   })
+
+  const handleLogin = async () => {
+    await login()
+    if (data.login) {
+      dispatch(loginAction(data.login))
+      navigation.navigate('Home')
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -50,10 +64,8 @@ const LoginScreen = () => {
       />
       <Input label="Password" value={password} onInput={setPassword} />
 
-      {loading && <Text>Cargando...</Text>}
+      <Button title={loading ? 'Cargando...' : 'Login'} onPress={handleLogin} />
       {error && <Text>Error: {error.message}</Text>}
-      {data && <Text>Data: {data.login._id}</Text>}
-      <Button title="Login" onPress={login} />
     </View>
   )
 }
