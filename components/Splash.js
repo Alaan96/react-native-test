@@ -4,14 +4,16 @@ import Logo from './Logo'
 
 const styles = StyleSheet.create({
   container: {
-    width: 100,
-    height: 100,
+    width: '100%',
+    height: '100%',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: 'white'
   },
   image: {
-    width: 100,
-    height: 100
+    width: 200,
+    height: 118,
+    marginBottom: 100
   }
 })
 

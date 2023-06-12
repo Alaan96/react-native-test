@@ -5,14 +5,14 @@ import Logo from './Logo'
 const styles = StyleSheet.create({
   header: {
     width: '100%',
-    paddingVertical: 100,
+    height: 80,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'white',
   },
   logo: {
-    width: 300,
-    height: 300,
+    width: 80,
+    height: 48,
   },
 })
 

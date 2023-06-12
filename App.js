@@ -1,17 +1,32 @@
 import React from 'react'
 import { AppRegistry } from 'react-native'
-import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client'
+import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client'
+import { setContext } from '@apollo/client/link/context'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 // import registerNNPushToken from 'native-notify'
 import { Provider } from 'react-redux'
 import store from './store'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 // Screens
 import HomeScreen from './screens/HomeScreen'
 import LoginScreen from './screens/LoginScreen'
 
+const httpLink = createHttpLink({
+  uri: 'http://192.168.0.76:8081/localdev/graphql'
+})
+const authLink = setContext(async (_, { headers }) => {
+  const token = await AsyncStorage.getItem('token')
+  return {
+    headers: {
+      ...headers,
+      Authorization: token ? `Bearer ${token}` : ''
+    }
+  }
+})
+
 const client = new ApolloClient({
-  uri: 'http://192.168.0.76:8081/localdev/graphql',
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache()
 })
 const Stack = createNativeStackNavigator()
